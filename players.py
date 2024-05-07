@@ -37,10 +37,3 @@ class MinimaxPlayer(Player):
             self.oppSym = 'O'
         else:
             self.oppSym = 'X'
-       
-        
-
-
-
-
-

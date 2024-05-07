@@ -85,5 +85,3 @@ class Board:
                 string += self.grid[c][r] + ' '
             print(string)
         print(string2)
-        
-
