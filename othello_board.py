@@ -77,6 +77,15 @@ class OthelloBoard(Board):
             if self.check_endpoint(next_col, next_row, symbol, d, False):
                 return True
         return False
+    
+    def get_legal_moves(self, symbol):
+        legal_moves = []
+        for i in range(self.get_num_cols()):
+            for j in range(self.get_num_rows):
+                if self.board[i][j] == '.':
+                    move = (i,j)
+                    if self.is_legal_move(move, i, j, symbol):
+                        legal_moves.append(move)
         
     def flip_pieces_helper(self, col, row, symbol, d):
         if self.get_cell(col, row) == symbol:
