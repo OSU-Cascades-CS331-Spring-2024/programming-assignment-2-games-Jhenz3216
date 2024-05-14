@@ -18,7 +18,7 @@ class GameDriver:
 
         if p2type.lower() in "human":
             self.p2 = HumanPlayer('O')
-        elif p2type.lower() in "minimax" or p1type in "ai":
+        elif p2type.lower() in "minimax" or p2type in "ai":
             self.p2 = MinimaxPlayer('O')
         else:
             print("Invalid player 2 type!")
