@@ -2,6 +2,7 @@
     Defines Player class, and subclasses Human and Minimax Player.
 '''
 from othello_board import OthelloBoard
+import time
 
 class Player:
     def __init__(self, symbol):
@@ -38,10 +39,16 @@ class MinimaxPlayer(Player):
             self.oppSym = 'O'
         else:
             self.oppSym = 'X'
-        self.depth = 5
+        self.depth = 2
+        self.moves = 0
+        self.times = []
     
     def get_move(self, board):
-        return self.get_best_move(board)
+        start = time.time()
+        best_move = self.get_best_move(board)
+        end = time.time()
+        self.times.append(end-start)
+        return best_move
 
     def minimax(self, board: OthelloBoard, depth, ismax):
         if depth == 0:
@@ -81,5 +88,15 @@ class MinimaxPlayer(Player):
             if (self.symbol == 'X' and eval > best_eval) or (self.symbol == 'O' and eval < best_eval):
                 best_eval = eval
                 best_move = move
-                print(best_move)
+        if best_move == None:
+            best_move = legal_moves[0]
+        self.moves += 1
         return best_move
+
+    def avg_time(self):
+        i = 0
+        sum = 0
+        for time in self.times:
+            i += 1
+            sum += time
+        return sum/i

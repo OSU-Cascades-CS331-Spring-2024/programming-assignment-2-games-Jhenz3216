@@ -77,11 +77,16 @@ class GameDriver:
             print("Player 1 Wins!")
         else:
             print("Player 2 Wins!")
+        
+        if self.p1.__class__ == MinimaxPlayer:
+            print("P1 average time per move: ", self.p1.avg_time())
+        if self.p2.__class__ == MinimaxPlayer:
+            print("P2 average time per move: ", self.p2.avg_time())
 
 
 if __name__ == "__main__":
-    if(len(sys.argv)) != 3:
+    if(len(sys.argv) != 3):
         print("Usage: python3 game_driver.py <player1 type> <player2 type>")
         exit(1)
-    game = GameDriver(sys.argv[1], sys.argv[2], 4, 4)
+    game = GameDriver(sys.argv[1], sys.argv[2], 8, 8)
     game.run()
